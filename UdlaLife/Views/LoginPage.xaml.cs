@@ -1,3 +1,6 @@
+using System;
+using Microsoft.Maui.Controls;
+
 namespace UdlaLife.Views;
 
 public partial class LoginPage : ContentPage
@@ -9,7 +12,7 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        // Simula el inicio de sesión.
-        await Navigation.PushAsync(new MainPage());
+        // Aquí iría la lógica de autenticación
+        await DisplayAlert("Login", "Inicio de sesión exitoso", "OK");
     }
 }

@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
+﻿using SQLite;
 
-namespace UdlaLife.Models
+namespace UdlaLife.Models;
+
+[Table("Estudiantes")]
+public class Estudiante
 {
-    public class Estudiante
-    {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public int CourseId { get; set; }
-    }
+    [PrimaryKey, AutoIncrement]
+    public int Id { get; set; }
+
+    [MaxLength(100)]
+    public string Nombre { get; set; }
+
+    [MaxLength(100)]
+    public string Apellido { get; set; }
+
+    [Unique, MaxLength(150)]
+    public string Email { get; set; }
+
+    [MaxLength(50)]
+    public string Password { get; set; }
+
+    public string Rol { get; set; }
 }
