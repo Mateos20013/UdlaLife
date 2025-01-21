@@ -1,21 +1,19 @@
-﻿using UdlaLife.Data;
+﻿using System.IO;
+using UdlaLife.Data;
+using UdlaLife.Views;
 
 namespace UdlaLife;
 
 public partial class App : Application
 {
-    public static DatabaseService Database { get; set; } // Hacer que el setter sea público
+    public static DatabaseService Database { get; private set; } = null!;
 
     public App()
     {
         InitializeComponent();
-        MainPage = new AppShell();
-    }
-
-    public App(string databasePath)
-    {
-        InitializeComponent();
+        var databasePath = Path.Combine(FileSystem.AppDataDirectory, "udla.db");
         Database = new DatabaseService(databasePath);
-        MainPage = new AppShell();
+
+        MainPage = new NavigationPage(new MainPage());
     }
 }

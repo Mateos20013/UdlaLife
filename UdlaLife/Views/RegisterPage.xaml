@@ -2,16 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UdlaLife.Views.RegisterPage"
-             BackgroundColor="White">
+             Title="Registro">
 
-    <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
-        <Label Text="Registro de Usuario" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
-
-        <Entry Placeholder="Ingresa tu Nombre" />
-        <Entry Placeholder="Ingresa tu Apellido" />
-        <Entry Placeholder="Ingresa tu Email" Keyboard="Email" />
-        <Entry Placeholder="Ingresa tu Contraseña" IsPassword="True" />
-
-        <Button Text="Registrarse" BackgroundColor="#800000" TextColor="White" FontSize="18" Clicked="OnRegisterClicked"/>
+    <StackLayout Padding="20" Spacing="20">
+        <Label Text="Bienvenido a UdlaLife" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Entry Placeholder="Registra tu Nombre" TextColor="Black" PlaceholderColor="Gray" />
+        <Entry Placeholder="Registra tu Apellido" TextColor="Black" PlaceholderColor="Gray" />
+        <Entry Placeholder="Registra tu Correo" TextColor="Black" PlaceholderColor="Gray" Keyboard="Email" />
+        <Entry Placeholder="Registra tu Contraseña" TextColor="Black" PlaceholderColor="Gray" IsPassword="True" />
+        <Button Text="Registrarse" BackgroundColor="#800000" TextColor="White" Clicked="OnRegisterClicked" />
+        <Button Text="Iniciar Sesión" BackgroundColor="LightGray" TextColor="Black" Clicked="OnLoginClicked" />
     </StackLayout>
 </ContentPage>

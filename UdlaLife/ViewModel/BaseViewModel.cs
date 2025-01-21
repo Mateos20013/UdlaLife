@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace UdlaLife.ViewModels;
+namespace UdlaLife.ViewModel;
 
 public class BaseViewModel : INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler PropertyChanged = delegate { }; // No será null
 
     protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {

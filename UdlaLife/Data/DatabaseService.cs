@@ -12,21 +12,25 @@ public class DatabaseService
     public DatabaseService(string dbPath)
     {
         _database = new SQLiteAsyncConnection(dbPath);
-        _database.CreateTableAsync<Estudiante>().Wait();
+        _database.CreateTableAsync<Estudiante>().Wait(); // Crea la tabla si no existe
     }
 
+    // Método para obtener todos los estudiantes
     public Task<List<Estudiante>> GetStudentsAsync()
     {
         return _database.Table<Estudiante>().ToListAsync();
     }
 
-    public Task<int> SaveStudentAsync(Estudiante estudiante)
+    // Método para obtener un estudiante por correo y contraseña
+    public Task<Estudiante?> GetEstudianteByEmailAndPasswordAsync(string email, string password)
     {
-        return _database.InsertAsync(estudiante);
+        return _database.Table<Estudiante>()
+                        .FirstOrDefaultAsync(e => e.Email == email && e.Password == password);
     }
 
-    public Task<int> DeleteStudentAsync(Estudiante estudiante)
+    // Método para guardar un estudiante
+    public Task<int> SaveEstudianteAsync(Estudiante estudiante)
     {
-        return _database.DeleteAsync(estudiante);
+        return _database.InsertAsync(estudiante);
     }
 }

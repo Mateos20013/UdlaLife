@@ -1,26 +1,23 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using UdlaLife.Data;
 using UdlaLife.Models;
 
 namespace UdlaLife.ViewModels;
 
-public class EstudianteViewModel : BaseViewModel
+public class EstudianteViewModel
 {
     private readonly DatabaseService _databaseService;
 
     public ObservableCollection<Estudiante> Estudiantes { get; set; } = new();
 
-    public ICommand LoadStudentsCommand { get; }
-
     public EstudianteViewModel(DatabaseService databaseService)
     {
         _databaseService = databaseService;
-        LoadStudentsCommand = new Command(async () => await LoadStudentsAsync());
+        _ = LoadStudentsAsync(); // Carga los estudiantes al inicializar
     }
 
-    private async Task LoadStudentsAsync()
+    public async Task LoadStudentsAsync()
     {
         var students = await _databaseService.GetStudentsAsync();
         Estudiantes.Clear();

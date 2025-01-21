@@ -1,5 +1,6 @@
-using System;
 using Microsoft.Maui.Controls;
+using System;
+using UdlaLife.Data;
 
 namespace UdlaLife.Views;
 
@@ -12,7 +13,25 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        // Aquí iría la lógica de autenticación
-        await DisplayAlert("Login", "Inicio de sesión exitoso", "OK");
+        string email = EmailEntry.Text;
+        string password = PasswordEntry.Text;
+
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+        {
+            await DisplayAlert("Error", "Por favor, ingresa tus credenciales.", "OK");
+            return;
+        }
+
+        // Valida las credenciales en la base de datos
+        var user = await App.Database.GetEstudianteByEmailAndPasswordAsync(email, password);
+        if (user != null)
+        {
+            await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
+            await Navigation.PushAsync(new StudentsPage());
+        }
+        else
+        {
+            await DisplayAlert("Error", "Credenciales incorrectas.", "OK");
+        }
     }
 }
