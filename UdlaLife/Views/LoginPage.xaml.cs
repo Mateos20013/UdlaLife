@@ -27,7 +27,15 @@ public partial class LoginPage : ContentPage
         if (user != null)
         {
             await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
-            await Navigation.PushAsync(new StudentsPage());
+            // Navega según el rol del usuario
+            if (user.Rol == "Estudiante")
+            {
+                await Navigation.PushAsync(new StudentsPage());
+            }
+            else if (user.Rol == "Profesor")
+            {
+                await Navigation.PushAsync(new ProfessorsPage());
+            }
         }
         else
         {
