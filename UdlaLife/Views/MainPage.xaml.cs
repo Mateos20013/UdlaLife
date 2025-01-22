@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
 using System;
-using UdlaLife.Views;
 
 namespace UdlaLife.Views
 {

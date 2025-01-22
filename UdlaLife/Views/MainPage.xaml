@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UdlaLife.Views.MainPage"
-             Title="Selecciona tu Rol">
-
-    <StackLayout Padding="20">
-        <Label Text="Selecciona tu rol" FontSize="24" HorizontalOptions="Center" />
-        <Button Text="Estudiante" Clicked="OnStudentClicked" BackgroundColor="Red" TextColor="White" />
-        <Button Text="Profesor" Clicked="OnProfessorClicked" BackgroundColor="DarkRed" TextColor="White" />
-        <Button Text="Registrarse" Clicked="OnRegisterClicked" BackgroundColor="Gray" TextColor="White" />
+             x:Class="UdlaLife.Views.MainPage">
+    <StackLayout>
+        <Label Text="Bienvenido a UdlaLife" 
+               FontSize="24" 
+               HorizontalOptions="Center" />
+        <Button Text="Estudiante" Clicked="OnStudentClicked" />
+        <Button Text="Profesor" Clicked="OnProfessorClicked" />
+        <Button Text="Registrarse" Clicked="OnRegisterClicked" />
     </StackLayout>
 </ContentPage>

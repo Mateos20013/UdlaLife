@@ -1,17 +1,18 @@
 using Microsoft.Maui.Controls;
 using System;
 using UdlaLife.Data;
+using UdlaLife.Models;
 
 namespace UdlaLife.Views
 {
     public partial class LoginPage : ContentPage
     {
-        private readonly string _rol;
+        private readonly string UserRole;
 
-        public LoginPage(string rol)
+        public LoginPage(string role)
         {
             InitializeComponent();
-            _rol = rol;
+            UserRole = role;
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)
@@ -26,18 +27,21 @@ namespace UdlaLife.Views
             }
 
             var user = await App.Database.GetEstudianteByEmailAndPasswordAsync(email, password);
-
-            if (user != null && user.Rol == _rol)
+            if (user != null && user.Rol == UserRole)
             {
                 await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
-                if (_rol == "Estudiante")
-                    await Navigation.PushAsync(new StudentsPage());
-                else if (_rol == "Profesor")
-                    await Navigation.PushAsync(new ProfessorsPage());
+                if (UserRole == "Estudiante")
+                {
+                    await Navigation.PushAsync(new StudentAttendancePage(user));
+                }
+                else
+                {
+                    await Navigation.PushAsync(new AttendancePage());
+                }
             }
             else
             {
-                await DisplayAlert("Error", "Credenciales incorrectas o rol incorrecto.", "OK");
+                await DisplayAlert("Error", "Credenciales incorrectas.", "OK");
             }
         }
     }

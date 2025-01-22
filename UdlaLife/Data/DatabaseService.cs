@@ -1,5 +1,4 @@
 ﻿using SQLite;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UdlaLife.Models;
 
@@ -15,19 +14,27 @@ namespace UdlaLife.Data
             _database.CreateTableAsync<Estudiante>().Wait();
         }
 
-        public Task<List<Estudiante>> GetEstudiantesAsync()
+        // Método para obtener un estudiante por email y contraseña
+        public async Task<Estudiante?> GetEstudianteByEmailAndPasswordAsync(string email, string password)
         {
-            return _database.Table<Estudiante>().ToListAsync();
+            return await _database.Table<Estudiante>()
+                                  .FirstOrDefaultAsync(e => e.Email == email && e.Password == password);
         }
 
-        public Task<Estudiante> GetEstudianteByEmailAndPasswordAsync(string email, string password)
-        {
-            return _database.Table<Estudiante>().FirstOrDefaultAsync(e => e.Email == email && e.Password == password);
-        }
-
+        // Otros métodos existentes
         public Task<int> SaveEstudianteAsync(Estudiante estudiante)
         {
             return _database.InsertAsync(estudiante);
+        }
+
+        public Task<int> UpdateAsistenciaAsync(Estudiante estudiante)
+        {
+            return _database.UpdateAsync(estudiante);
+        }
+
+        public Task<List<Estudiante>> GetEstudiantesAsync()
+        {
+            return _database.Table<Estudiante>().ToListAsync();
         }
     }
 }
