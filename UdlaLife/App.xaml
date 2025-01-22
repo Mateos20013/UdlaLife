@@ -4,7 +4,13 @@
              x:Class="UdlaLife.App">
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Define tus recursos directamente aquí -->
             <converters:BoolToStringConverter x:Key="BoolToStringConverter" />
+
+            <!-- MergedDictionaries para incluir otros archivos de estilos -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
