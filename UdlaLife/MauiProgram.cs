@@ -2,6 +2,7 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using UdlaLife.Data;
 
 namespace UdlaLife;
 
@@ -11,7 +12,7 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
-            .UseMauiApp<App>() // Especifica explícitamente el tipo de App
+            .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -20,7 +21,7 @@ public static class MauiProgram
 
         // Inicialización de la base de datos
         var databasePath = Path.Combine(FileSystem.AppDataDirectory, "udla.db");
-        App.Database = new Data.DatabaseService(databasePath);
+        App.Database = new DatabaseService(databasePath);
 
         return builder.Build();
     }

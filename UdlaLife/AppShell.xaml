@@ -4,5 +4,5 @@
        xmlns:views="clr-namespace:UdlaLife.Views"
        x:Class="UdlaLife.AppShell">
 
-    <ShellContent Title="Inicio" ContentTemplate="{DataTemplate views:MainPage}" />
+    <ShellContent Title="Estudiantes" ContentTemplate="{DataTemplate views:StudentsPage}" />
 </Shell>
