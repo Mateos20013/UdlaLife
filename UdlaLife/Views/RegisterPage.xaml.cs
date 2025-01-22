@@ -27,7 +27,6 @@ public partial class RegisterPage : ContentPage
             return;
         }
 
-        // Guarda el usuario en la base de datos
         await App.Database.SaveEstudianteAsync(new Estudiante
         {
             Nombre = nombre,
@@ -39,10 +38,5 @@ public partial class RegisterPage : ContentPage
 
         await DisplayAlert("Éxito", "Usuario registrado exitosamente.", "OK");
         await Navigation.PopAsync();
-    }
-
-    private async void OnLoginClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LoginPage());
     }
 }

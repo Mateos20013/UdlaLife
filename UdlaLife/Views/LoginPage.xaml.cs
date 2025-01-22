@@ -2,44 +2,43 @@ using Microsoft.Maui.Controls;
 using System;
 using UdlaLife.Data;
 
-namespace UdlaLife.Views;
-
-public partial class LoginPage : ContentPage
+namespace UdlaLife.Views
 {
-    public LoginPage()
+    public partial class LoginPage : ContentPage
     {
-        InitializeComponent();
-    }
+        private readonly string _rol;
 
-    private async void OnLoginClicked(object sender, EventArgs e)
-    {
-        string email = EmailEntry.Text;
-        string password = PasswordEntry.Text;
-
-        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+        public LoginPage(string rol)
         {
-            await DisplayAlert("Error", "Por favor, ingresa tus credenciales.", "OK");
-            return;
+            InitializeComponent();
+            _rol = rol;
         }
 
-        // Valida las credenciales en la base de datos
-        var user = await App.Database.GetEstudianteByEmailAndPasswordAsync(email, password);
-        if (user != null)
+        private async void OnLoginClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
-            // Navega según el rol del usuario
-            if (user.Rol == "Estudiante")
+            string email = EmailEntry.Text;
+            string password = PasswordEntry.Text;
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                await Navigation.PushAsync(new StudentsPage());
+                await DisplayAlert("Error", "Por favor, ingresa tus credenciales.", "OK");
+                return;
             }
-            else if (user.Rol == "Profesor")
+
+            var user = await App.Database.GetEstudianteByEmailAndPasswordAsync(email, password);
+
+            if (user != null && user.Rol == _rol)
             {
-                await Navigation.PushAsync(new ProfessorsPage());
+                await DisplayAlert("Éxito", "Inicio de sesión exitoso.", "OK");
+                if (_rol == "Estudiante")
+                    await Navigation.PushAsync(new StudentsPage());
+                else if (_rol == "Profesor")
+                    await Navigation.PushAsync(new ProfessorsPage());
             }
-        }
-        else
-        {
-            await DisplayAlert("Error", "Credenciales incorrectas.", "OK");
+            else
+            {
+                await DisplayAlert("Error", "Credenciales incorrectas o rol incorrecto.", "OK");
+            }
         }
     }
 }

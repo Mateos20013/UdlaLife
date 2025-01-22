@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UdlaLife.Views.LoginPage"
-             Title="Iniciar Sesión">
+             Title="Inicio de Sesión">
 
-    <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
-        <Label Text="Iniciar Sesión" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
-        <Entry x:Name="EmailEntry" Placeholder="Correo Electrónico" Keyboard="Email"/>
-        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True"/>
-        <Button Text="Iniciar Sesión" BackgroundColor="#800000" TextColor="White" Clicked="OnLoginClicked"/>
+    <StackLayout Padding="20">
+        <Label Text="Inicio de Sesión" FontSize="24" HorizontalOptions="Center" />
+        <Entry x:Name="EmailEntry" Placeholder="Correo electrónico" Keyboard="Email" />
+        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" IsPassword="True" />
+        <Button Text="Iniciar Sesión" Clicked="OnLoginClicked" BackgroundColor="Red" TextColor="White" />
     </StackLayout>
 </ContentPage>

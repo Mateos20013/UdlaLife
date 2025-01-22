@@ -1,13 +1,14 @@
 using Microsoft.Maui.Controls;
-using UdlaLife.ViewModels;
+using UdlaLife.ViewModel;
 
-namespace UdlaLife.Views;
-
-public partial class StudentsPage : ContentPage
+namespace UdlaLife.Views
 {
-    public StudentsPage()
+    public partial class StudentsPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new EstudianteViewModel(App.Database);
+        public StudentsPage()
+        {
+            InitializeComponent();
+            BindingContext = new EstudianteViewModel(App.Database);
+        }
     }
 }

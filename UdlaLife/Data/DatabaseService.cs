@@ -1,36 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using SQLite;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using SQLite;
 using UdlaLife.Models;
 
-namespace UdlaLife.Data;
-
-public class DatabaseService
+namespace UdlaLife.Data
 {
-    private readonly SQLiteAsyncConnection _database;
-
-    public DatabaseService(string dbPath)
+    public class DatabaseService
     {
-        _database = new SQLiteAsyncConnection(dbPath);
-        _database.CreateTableAsync<Estudiante>().Wait(); // Crea la tabla si no existe
-    }
+        private readonly SQLiteAsyncConnection _database;
 
-    // Método para obtener todos los estudiantes
-    public Task<List<Estudiante>> GetStudentsAsync()
-    {
-        return _database.Table<Estudiante>().ToListAsync();
-    }
+        public DatabaseService(string dbPath)
+        {
+            _database = new SQLiteAsyncConnection(dbPath);
+            _database.CreateTableAsync<Estudiante>().Wait();
+        }
 
-    // Método para guardar un estudiante
-    public Task<int> SaveEstudianteAsync(Estudiante estudiante)
-    {
-        return _database.InsertAsync(estudiante);
-    }
+        public Task<List<Estudiante>> GetEstudiantesAsync()
+        {
+            return _database.Table<Estudiante>().ToListAsync();
+        }
 
-    // Método para obtener un estudiante por correo y contraseña
-    public Task<Estudiante?> GetEstudianteByEmailAndPasswordAsync(string email, string password)
-    {
-        return _database.Table<Estudiante>()
-                        .FirstOrDefaultAsync(e => e.Email == email && e.Password == password);
+        public Task<Estudiante> GetEstudianteByEmailAndPasswordAsync(string email, string password)
+        {
+            return _database.Table<Estudiante>().FirstOrDefaultAsync(e => e.Email == email && e.Password == password);
+        }
+
+        public Task<int> SaveEstudianteAsync(Estudiante estudiante)
+        {
+            return _database.InsertAsync(estudiante);
+        }
     }
 }

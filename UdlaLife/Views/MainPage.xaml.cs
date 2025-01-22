@@ -1,28 +1,29 @@
 ﻿using Microsoft.Maui.Controls;
+using System;
+using UdlaLife.Views;
 
-namespace UdlaLife.Views;
-
-public partial class MainPage : ContentPage
+namespace UdlaLife.Views
 {
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
-    }
+        public MainPage()
+        {
+            InitializeComponent();
+        }
 
-    private async void OnEstudianteClicked(object sender, EventArgs e)
-    {
-        // Cambia la navegación para ir primero a LoginPage
-        await Navigation.PushAsync(new LoginPage());
-    }
+        private async void OnStudentClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage("Estudiante"));
+        }
 
-    private async void OnProfesorClicked(object sender, EventArgs e)
-    {
-        // Cambia la navegación para ir primero a LoginPage
-        await Navigation.PushAsync(new LoginPage());
-    }
+        private async void OnProfessorClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage("Profesor"));
+        }
 
-    private async void OnRegistrarseClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new RegisterPage());
+        private async void OnRegisterClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterPage());
+        }
     }
 }

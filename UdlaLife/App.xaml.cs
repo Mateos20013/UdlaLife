@@ -1,19 +1,22 @@
-﻿using System.IO;
+﻿using Microsoft.Maui.Controls;
+using System.IO;
 using UdlaLife.Data;
 using UdlaLife.Views;
 
-namespace UdlaLife;
-
-public partial class App : Application
+namespace UdlaLife
 {
-    public static DatabaseService Database { get; private set; } = null!;
-
-    public App()
+    public partial class App : Application
     {
-        InitializeComponent();
-        var databasePath = Path.Combine(FileSystem.AppDataDirectory, "udla.db");
-        Database = new DatabaseService(databasePath);
+        public static DatabaseService Database { get; private set; }
 
-        MainPage = new NavigationPage(new MainPage());
+        public App()
+        {
+            InitializeComponent();
+
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "udla.db");
+            Database = new DatabaseService(databasePath);
+
+            MainPage = new NavigationPage(new MainPage());
+        }
     }
 }

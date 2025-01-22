@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UdlaLife.Views.RegisterPage"
              Title="Registro">
-
-    <StackLayout Padding="20" Spacing="20">
-        <Label Text="Registro de Usuario" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
-        <Entry x:Name="NombreEntry" Placeholder="Nombre" TextColor="Black" PlaceholderColor="Gray" />
-        <Entry x:Name="ApellidoEntry" Placeholder="Apellido" TextColor="Black" PlaceholderColor="Gray" />
-        <Entry x:Name="EmailEntry" Placeholder="Correo Electrónico" TextColor="Black" PlaceholderColor="Gray" Keyboard="Email" />
-        <Entry x:Name="PasswordEntry" Placeholder="Contraseña" TextColor="Black" PlaceholderColor="Gray" IsPassword="True" />
-        <Picker x:Name="RolPicker" Title="Selecciona tu Rol">
-            <Picker.Items>
-                <x:String>Estudiante</x:String>
-                <x:String>Profesor</x:String>
-            </Picker.Items>
+    <StackLayout Padding="20">
+        <Label Text="Registrarse" FontSize="24" HorizontalOptions="Center" />
+        <Entry Placeholder="Nombre" x:Name="NombreEntry" />
+        <Entry Placeholder="Apellido" x:Name="ApellidoEntry" />
+        <Entry Placeholder="Email" x:Name="EmailEntry" />
+        <Entry Placeholder="Contraseña" IsPassword="True" x:Name="PasswordEntry" />
+        <Picker x:Name="RolPicker" Title="Selecciona un Rol">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Estudiante</x:String>
+                    <x:String>Profesor</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
         </Picker>
-        <Button Text="Registrarse" BackgroundColor="#800000" TextColor="White" Clicked="OnRegisterClicked" />
-        <Button Text="Iniciar Sesión" BackgroundColor="LightGray" TextColor="Black" Clicked="OnLoginClicked" />
+        <Button Text="Registrarse" Clicked="OnRegisterClicked" BackgroundColor="Red" TextColor="White" />
     </StackLayout>
 </ContentPage>
