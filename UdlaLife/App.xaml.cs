@@ -1,21 +1,16 @@
 ﻿using UdlaLife.Data;
-using UdlaLife.Views;
+using Microsoft.Maui.Controls;
 
-namespace UdlaLife
+namespace UdlaLife;
+
+public partial class App : Application
 {
-    public partial class App : Application
+    public static DatabaseService Database { get; set; } // Cambiado a 'set' público
+
+    public App()
     {
-        public static DatabaseService DatabaseService { get; private set; }
+        InitializeComponent();
 
-        public App()
-        {
-            InitializeComponent();
-
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "UDLADatabase.db3");
-            DatabaseService = new DatabaseService(dbPath);
-
-            MainPage = new NavigationPage(new HomePage());
-        }
+        MainPage = new AppShell();
     }
-
 }

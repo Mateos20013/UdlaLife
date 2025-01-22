@@ -1,41 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
-using System.IO;
 using UdlaLife.Models;
 
+namespace UdlaLife.Data;
 
-
-namespace UdlaLife.Data
+public class DatabaseService
 {
-   
-    
+    private readonly SQLiteAsyncConnection _database;
 
-    public class DatabaseService
+    public DatabaseService(string dbPath)
     {
-        private readonly SQLiteAsyncConnection _database;
-
-        public DatabaseService(string dbPath)
-        {
-            _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Estudiante>().Wait();
-            _database.CreateTableAsync<Curso>().Wait();
-        }
-
-        public Task<List<Estudiante>> GetStudentsAsync() =>
-        _database.Table<Estudiante>().ToListAsync();
-
-        public Task<List<Curso>> GetCoursesAsync() =>
-            _database.Table<Curso>().ToListAsync();
-
-        public Task<int> SaveStudentAsync(Estudiante Estudiante) =>
-        _database.InsertOrReplaceAsync(Estudiante);
-
-        public Task<int> SaveCourseAsync(Curso curso) =>
-            _database.InsertOrReplaceAsync(curso);
+        _database = new SQLiteAsyncConnection(dbPath);
+        _database.CreateTableAsync<Estudiante>().Wait();
     }
 
+    // Método para obtener todos los estudiantes de la base de datos
+    public Task<List<Estudiante>> GetStudentsAsync()
+    {
+        return _database.Table<Estudiante>().ToListAsync();
+    }
+
+    // Método para guardar un estudiante
+    public Task<int> SaveStudentAsync(Estudiante estudiante)
+    {
+        return _database.InsertAsync(estudiante);
+    }
+
+    // Método para eliminar un estudiante
+    public Task<int> DeleteStudentAsync(Estudiante estudiante)
+    {
+        return _database.DeleteAsync(estudiante);
+    }
 }

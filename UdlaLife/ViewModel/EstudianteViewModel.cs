@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using UdlaLife.Data;
 using UdlaLife.Models;
-using UdlaLife.ViewModel;
 
-namespace UdlaLife.ViewModels
+namespace UdlaLife.ViewModels;
+
+public class EstudentViewModel : BaseViewModel
 {
-    public class EstudentViewModel : BaseViewModel
+    private readonly DatabaseService _databaseService;
+    public ObservableCollection<Estudiante> Estudiantes { get; set; } = new();
+
+    public EstudentViewModel(DatabaseService databaseService)
     {
-        private readonly DatabaseService _databaseService;
-        public ObservableCollection<Estudiante> Estudiante { get; set; }
+        _databaseService = databaseService;
+    }
 
-        public EstudentViewModel(DatabaseService databaseService)
+    // Método para cargar los estudiantes desde la base de datos
+    public async Task LoadStudents()
+    {
+        var students = await _databaseService.GetStudentsAsync();
+        Estudiantes.Clear();
+        foreach (var student in students)
         {
-            _databaseService = databaseService;
-            Estudiante = new ObservableCollection<Estudiante>();
-        }
-
-        public async Task LoadStudents()
-        {
-            var students = await _databaseService.GetStudentsAsync();
-            foreach (var student in students)
-            {
-                Estudiante.Add(student);
-            }
+            Estudiantes.Add(student);
         }
     }
 }
