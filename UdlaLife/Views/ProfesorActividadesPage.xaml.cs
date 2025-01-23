@@ -1,19 +1,14 @@
 using Microsoft.Maui.Controls;
 using System;
-using System.Collections.ObjectModel;
 using UdlaLife.Models;
 
 namespace UdlaLife.Views
 {
     public partial class ProfesorActividadesPage : ContentPage
     {
-        public ObservableCollection<Actividad> Actividades { get; set; }
-
         public ProfesorActividadesPage()
         {
             InitializeComponent();
-            Actividades = new ObservableCollection<Actividad>();
-            BindingContext = this;
         }
 
         private async void OnSaveActividadClicked(object sender, EventArgs e)
@@ -22,12 +17,10 @@ namespace UdlaLife.Views
             {
                 Titulo = TituloEntry.Text,
                 Descripcion = DescripcionEditor.Text,
-                Profesor = "Profesor Nombre" // Puedes reemplazar con datos reales
+                Profesor = "Profesor Nombre" // Aquí puedes agregar el nombre real del profesor
             };
 
             await App.Database.SaveActividadAsync(nuevaActividad);
-            Actividades.Add(nuevaActividad);
-
             await DisplayAlert("Éxito", "Actividad creada exitosamente", "OK");
         }
     }

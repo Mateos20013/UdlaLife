@@ -1,6 +1,4 @@
 using Microsoft.Maui.Controls;
-using System;
-using System.IO;
 using Microsoft.Maui.Storage; // Necesario para FilePicker
 
 namespace UdlaLife.Views
@@ -14,6 +12,7 @@ namespace UdlaLife.Views
             InitializeComponent();
         }
 
+        // Método para seleccionar el archivo PDF
         private async void OnSeleccionarArchivoClicked(object sender, EventArgs e)
         {
             try
@@ -27,7 +26,8 @@ namespace UdlaLife.Views
                 if (fileResult != null)
                 {
                     _archivoRuta = fileResult.FullPath;
-                    ArchivoSeleccionadoLabel.Text = $"Archivo seleccionado: {fileResult.FileName}";
+                    // Aquí puedes mostrar el nombre del archivo seleccionado
+                    // ArchivoSeleccionadoLabel.Text = $"Archivo seleccionado: {fileResult.FileName}";
                 }
             }
             catch (Exception ex)
@@ -36,6 +36,7 @@ namespace UdlaLife.Views
             }
         }
 
+        // Método para subir la tarea
         private async void OnSubirTareaClicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_archivoRuta))
@@ -44,7 +45,7 @@ namespace UdlaLife.Views
                 return;
             }
 
-            // Aquí podrías implementar la lógica para subir el archivo a tu base de datos o servidor.
+            // Aquí puedes implementar la lógica para subir el archivo a tu base de datos o servidor.
             await DisplayAlert("Éxito", "Tarea subida correctamente.", "OK");
         }
     }

@@ -5,7 +5,6 @@
        x:Class="UdlaLife.AppShell">
 
     <ShellContent Title="Iniciar Sesión" ContentTemplate="{DataTemplate local:LoginPage}" />
-
     <TabBar>
         <Tab Title="Inicio">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
@@ -13,7 +12,6 @@
         <Tab Title="Estudiantes">
             <ShellContent ContentTemplate="{DataTemplate local:StudentsPage}" />
         </Tab>
-        <!-- Agregar pestaña para tareas -->
         <Tab Title="Tareas">
             <ShellContent ContentTemplate="{DataTemplate local:SubirTareaPage}" />
         </Tab>

@@ -5,7 +5,6 @@ using Microsoft.Maui.Storage;
 using UdlaLife.Models;
 using UdlaLife.Data;
 using UdlaLife.Views;
-
 namespace UdlaLife.ViewModel
 {
     public class EstudianteActividadesViewModel
@@ -17,7 +16,7 @@ namespace UdlaLife.ViewModel
         {
             Actividades = new ObservableCollection<Actividad>();
             LoadActividades();
-            SubirTareaCommand = new Command(OnSubirTareaClicked); // Comando para el botón "Subir Tarea"
+            SubirTareaCommand = new Command(OnSubirTareaClicked);
         }
 
         private async void LoadActividades()
@@ -31,7 +30,7 @@ namespace UdlaLife.ViewModel
 
         private async void OnSubirTareaClicked()
         {
-            // Aquí puedes agregar la lógica para navegar a la página de "Subir Tarea"
+            // Lógica para navegar a la página de SubirTareaPage
             await Application.Current.MainPage.Navigation.PushAsync(new SubirTareaPage());
         }
     }

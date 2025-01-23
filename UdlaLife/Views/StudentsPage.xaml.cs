@@ -3,8 +3,6 @@ using System;
 using UdlaLife.ViewModel;
 using UdlaLife.Views;
 
-
-
 namespace UdlaLife.Views
 {
     public partial class StudentsPage : ContentPage
@@ -21,5 +19,10 @@ namespace UdlaLife.Views
             await Navigation.PushAsync(new SubirTareaPage());
         }
 
+        private async void OnGoToTareasClicked(object sender, EventArgs e)
+        {
+            // Navegar a la página de tareas
+            await Navigation.PushAsync(new SubirTareaPage());
+        }
     }
 }
