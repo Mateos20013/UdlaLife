@@ -5,7 +5,19 @@
              Title="Página de Profesores">
 
     <StackLayout Padding="20" Spacing="20">
-        <Label Text="Bienvenido a la Página de Profesores" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
-        <Label Text="Aquí puedes gestionar las actividades relacionadas con los profesores." HorizontalOptions="Center" />
+        <Label Text="Bienvenido a la Página de Profesores" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" />
+        <Label Text="Aquí puedes gestionar las actividades relacionadas con los profesores." 
+               HorizontalOptions="Center" />
+
+        <!-- Botón para crear actividad -->
+        <Button Text="Crear Actividad"
+                Clicked="OnActividadesClicked"
+                BackgroundColor="Green"
+                TextColor="White"
+                Margin="10"
+                FontSize="18"/>
     </StackLayout>
 </ContentPage>

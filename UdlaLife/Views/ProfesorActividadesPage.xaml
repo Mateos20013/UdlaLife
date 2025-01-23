@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UdlaLife.Views.ProfesorActividadesPage"
+             Title="Crear Actividad">
+    <StackLayout Padding="20">
+        <Label Text="Crear Actividad" FontSize="24" HorizontalOptions="Center" />
+        <Entry x:Name="TituloEntry" Placeholder="Título de la actividad" />
+        <Editor x:Name="DescripcionEditor" Placeholder="Descripción" HeightRequest="100" />
+        <Button Text="Guardar Actividad" Clicked="OnSaveActividadClicked" />
+        <CollectionView ItemsSource="{Binding Actividades}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Titulo}" FontSize="18" />
+                        <Label Text="{Binding Descripcion}" FontSize="14" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
