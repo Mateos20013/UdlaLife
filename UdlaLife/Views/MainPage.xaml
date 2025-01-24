@@ -4,42 +4,53 @@
              x:Class="UdlaLife.Views.MainPage"
              BackgroundColor="White"
              Title="Login">
+
     <StackLayout Padding="20" Spacing="20" VerticalOptions="CenterAndExpand">
         <!-- Imagen de cabecera -->
-        <Image Source="logo_placeholder.png" HeightRequest="150" Aspect="AspectFit" />
-
-        <!-- Título principal -->
-        <Label Text="Bienvenido a UdlaLife"
-               FontSize="24"
-               FontAttributes="Bold"
+        <Image Source="https://www.bicubik.photo/web/wp-content/uploads/2017/01/MG_7741.jpg" 
+               HeightRequest="200" 
+               Aspect="AspectFill" 
                HorizontalOptions="Center" />
+
+        <!-- Título principal (más grande) -->
+        <Label Text="Bienvenido a UdlaLife"
+               FontSize="36"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" 
+               Margin="0, 20" />
 
         <!-- Botones de rol -->
         <Button Text="Estudiante"
-                FontSize="18"
+                FontSize="22"
                 TextColor="White"
                 BackgroundColor="#A10000"
                 CornerRadius="25"
-                HeightRequest="50"
+                HeightRequest="60"
+                HorizontalOptions="FillAndExpand"
                 Clicked="OnStudentClicked" />
+
         <Button Text="Profesor"
-                FontSize="18"
+                FontSize="22"
                 TextColor="White"
                 BackgroundColor="#A10000"
                 CornerRadius="25"
-                HeightRequest="50"
+                HeightRequest="60"
+                HorizontalOptions="FillAndExpand"
                 Clicked="OnProfessorClicked" />
 
         <!-- Botón de registro -->
         <Label Text="¿No tienes una cuenta?"
-               FontSize="14"
-               HorizontalOptions="Center" />
+               FontSize="16"
+               HorizontalOptions="Center" 
+               Margin="0, 20" />
+
         <Button Text="Regístrate"
-                FontSize="14"
+                FontSize="16"
                 TextColor="Black"
                 BackgroundColor="#E0E0E0"
                 CornerRadius="25"
-                HeightRequest="40"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
                 Clicked="OnRegisterClicked" />
     </StackLayout>
 </ContentPage>
